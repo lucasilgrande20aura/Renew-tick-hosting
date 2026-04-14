@@ -62,7 +62,7 @@ def login_to_dashboard(driver):
     try:
         print("Attempting to login with cookies...")
         driver.get("https://tickhosting.com/")
-        time.sleep(5)
+        time.sleep(10)
         
         print("Adding cookies...")
         add_cookies(driver)
@@ -79,7 +79,7 @@ def login_to_dashboard(driver):
             try:
                 print(f"Attempting to navigate to: {url}")
                 driver.get(url)
-                time.sleep(5)
+                time.sleep(10)
                 
                 print(f"Current URL after navigation: {driver.current_url}")
                 print(f"Current page title: {driver.title}")
@@ -201,7 +201,7 @@ def try_login(driver):
     try:
         print("\nAttempting to navigate to dashboard...")
         driver.get("https://tickhosting.com")
-        time.sleep(5)
+        time.sleep(30)
         print(f"URL after navigation: {driver.current_url}")
         
         # Check if we're on the dashboard
