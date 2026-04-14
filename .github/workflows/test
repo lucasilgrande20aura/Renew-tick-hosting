@@ -1,0 +1,29 @@
+name: Auto Renew Tickhosting
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'  # Run every 4 hours
+  workflow_dispatch:
+
+jobs:
+  renew:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install deps
+        run: npm install node-fetch@3
+
+      - name: Run renew script
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+          SERVER_ID: ${{ secrets.SERVER_ID }}
+          PANEL_URL: ${{ secrets.PANEL_URL }}
+        run: node renew.js
